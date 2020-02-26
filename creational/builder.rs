@@ -15,7 +15,6 @@ impl Product {
         for v in &self.parts {
             println!("{}", v);
         }
-
         println!("{0}{1}{0}", "*".repeat(10), "*".repeat(parts_list.len()));
     }
 }
@@ -128,7 +127,7 @@ fn main() {
     direct.construct();
     let product = direct.builder.get_product();
     product.list_parts();
-    // output: 
+    // output:
     /*
     ********** parts **********
     part a1
