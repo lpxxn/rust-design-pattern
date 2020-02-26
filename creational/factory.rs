@@ -23,7 +23,7 @@ struct Circl {}
 
 impl Shap for Circl {
     fn draw(&self) {
-        println!("draw a circl !");
+        println!("draw a circl!");
     }
 }
 
@@ -39,7 +39,7 @@ impl ShapFactory {
 
 fn main() {
     let shap = ShapFactory::new_shap(&ShapType::Circl);
-    shap.draw(); // output: draw a circl !
+    shap.draw(); // output: draw a circl!
 
     let shap = ShapFactory::new_shap(&ShapType::Rectangle);
     shap.draw(); // output: draw a rectangle!
