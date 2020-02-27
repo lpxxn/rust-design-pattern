@@ -15,8 +15,14 @@
 | [Singleton](/creational/singleton.rs) | Restricts instantiation of a type to one object | ✔ |
 
 
-
 ## Behavioral Patterns
 | Pattern | Description | Status |
 |:-------:|:----------- |:------:|
 | [Strategy](/behavioral/strategy.rs) | Enables an algorithm's behavior to be selected at runtime | ✔ |
+
+
+## Structural Patterns
+
+| Pattern | Description | Status |
+|:-------:|:----------- |:------:|
+| [Adapter](/structural/adapter.rs) | allows objects with incompatible interfaces to collaborate. | ✔ |
