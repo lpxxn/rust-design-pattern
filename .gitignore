@@ -11,4 +11,4 @@ Cargo.lock
 .vscode/
 .DS_Store
 .history
-
+.idea
