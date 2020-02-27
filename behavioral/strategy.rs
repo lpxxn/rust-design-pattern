@@ -26,7 +26,7 @@ impl Duck {
 
     fn new(fly_behaviour: Box<dyn FlyBehavior>) -> Duck {
         Duck {
-            fly_behaviour: fly_behaviour,
+            fly_behaviour,
         }
     }
 

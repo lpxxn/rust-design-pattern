@@ -11,7 +11,7 @@ fn get_config() -> Arc<Mutex<Config>> {
         CONF.get_or_insert_with(|| {
             println!("init"); // do once
             Arc::new(Mutex::new(Config {
-                db_connection_str: "abcdef".to_string(),
+                db_connection_str: "test config".to_string(),
             }))
         })
         .clone()

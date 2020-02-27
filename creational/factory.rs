@@ -2,45 +2,45 @@
 Factory method creational design pattern allows creating objects without having to specify the exact type of the object that will be created.
 */
 
-trait Shap {
+trait Shape {
     fn draw(&self);
 }
 
-enum ShapType {
+enum ShapeType {
     Rectangle,
-    Circl,
+    Circle,
 }
 
 struct Rectangle {}
 
-impl Shap for Rectangle {
+impl Shape for Rectangle {
     fn draw(&self) {
         println!("draw a rectangle!");
     }
 }
 
-struct Circl {}
+struct Circle {}
 
-impl Shap for Circl {
+impl Shape for Circle {
     fn draw(&self) {
         println!("draw a circl!");
     }
 }
 
-struct ShapFactory;
-impl ShapFactory {
-    fn new_shap(s: &ShapType) -> Box<dyn Shap> {
+struct ShapeFactory;
+impl ShapeFactory {
+    fn new_shape(s: &ShapeType) -> Box<dyn Shape> {
         match s {
-            ShapType::Circl => Box::new(Circl {}),
-            ShapType::Rectangle => Box::new(Rectangle {}),
+            ShapeType::Circle => Box::new(Circle {}),
+            ShapeType::Rectangle => Box::new(Rectangle {}),
         }
     }
 }
 
 fn main() {
-    let shap = ShapFactory::new_shap(&ShapType::Circl);
-    shap.draw(); // output: draw a circl!
+    let shape = ShapeFactory::new_shape(&ShapeType::Circle);
+    shape.draw(); // output: draw a circle!
 
-    let shap = ShapFactory::new_shap(&ShapType::Rectangle);
-    shap.draw(); // output: draw a rectangle!
+    let shape = ShapeFactory::new_shape(&ShapeType::Rectangle);
+    shape.draw(); // output: draw a rectangle!
 }

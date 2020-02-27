@@ -8,7 +8,7 @@ trait Target {
 }
 
 struct DefaultTarget;
-impl Target for DefaultTarget {} 
+impl Target for DefaultTarget {}
 
 // The Adaptee contains some useful behavior, but its interface is
 // incompatible with the existing client code. The Adaptee needs some
@@ -19,9 +19,7 @@ struct Adaptee {
 
 impl Adaptee {
     fn new(s: String) -> Adaptee {
-        Adaptee{
-            req_str: s,
-        }
+        Adaptee { req_str: s }
     }
     fn specific_request(&self) -> String {
         format!("specific request: {}", self.req_str)
@@ -36,9 +34,7 @@ struct Adapter {
 
 impl Adapter {
     fn new(a: Rc<Adaptee>) -> Adapter {
-        Adapter {
-            adaptee: a,
-        }
+        Adapter { adaptee: a }
     }
 }
 
@@ -51,15 +47,14 @@ impl Target for Adapter {
 // The client code supports all classes that follow the Target trait.
 struct Client;
 impl Client {
-    fn clinet_code<T: Target>(target: T) {
+    fn client_code<T: Target>(target: T) {
         println!("{}", target.get_request());
     }
 }
 
-
 fn main() {
     println!("Client: I can work just fine with the Target objects:");
-    Client::clinet_code(DefaultTarget{});
+    Client::clinet_code(DefaultTarget {});
     let adaptee = Rc::new(Adaptee::new("hello world".to_string()));
     println!("Client: The Adaptee class has a weird interface. See, I don't understand it:");
     println!("Adaptee: {}", adaptee.specific_request());
