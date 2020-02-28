@@ -47,19 +47,19 @@ impl Target for Adapter {
 // The client code supports all classes that follow the Target trait.
 struct Client;
 impl Client {
-    fn client_code<T: Target>(target: T) {
+    fn client_code<T: Target>(target: &T) {
         println!("{}", target.get_request());
     }
 }
 
 fn main() {
     println!("Client: I can work just fine with the Target objects:");
-    Client::clinet_code(DefaultTarget {});
+    Client::client_code(&DefaultTarget {});
     let adaptee = Rc::new(Adaptee::new("hello world".to_string()));
     println!("Client: The Adaptee class has a weird interface. See, I don't understand it:");
     println!("Adaptee: {}", adaptee.specific_request());
 
     println!("Client: But I can work with it via the Adapter:");
     let adapter = Adapter::new(adaptee);
-    Client::clinet_code(adapter);
+    Client::client_code(&adapter);
 }
