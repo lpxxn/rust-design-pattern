@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/rust-logo.png" height="200">
+  <img src="/rust-logo.png" height="150">
   <h1 align="center">
     Rust Design Patterns
   </h1>
