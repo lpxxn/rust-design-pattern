@@ -25,9 +25,7 @@ impl Duck {
     }
 
     fn new(fly_behaviour: Box<dyn FlyBehavior>) -> Duck {
-        Duck {
-            fly_behaviour,
-        }
+        Duck { fly_behaviour }
     }
 
     fn set_fly_behaviour(&mut self, fly_behaviour: Box<dyn FlyBehavior>) {
