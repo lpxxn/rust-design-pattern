@@ -1,6 +1,7 @@
 /*
 Builder is a creational design pattern, which allows constructing complex objects step by step.
 */
+#[derive(Clone)]
 struct Product {
     parts: Vec<String>,
 }
@@ -58,10 +59,11 @@ impl Builder for ContreteBuilder1 {
         self.product.parts.push("part c1".to_string());
     }
     fn get_product(&mut self) -> Product {
-        let p = Product {
-            parts: self.product.parts.clone(),
-            ..self.product
-        };
+        let p = self.product.clone();
+        // Product {
+        //     parts: self.product.parts.clone(),
+        //     ..self.product
+        // };
         self.product = Product::new();
         p
     }
