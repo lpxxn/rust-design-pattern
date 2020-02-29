@@ -33,9 +33,7 @@ struct ConcreteDecoratorA {
 
 impl Decorator for ConcreteDecoratorA {
     fn new(component: Rc<dyn Component>) -> Self {
-        ConcreteDecoratorA {
-            component,
-        }
+        ConcreteDecoratorA { component }
     }
 }
 
@@ -51,9 +49,7 @@ struct ConcreteDecoratorB {
 
 impl Decorator for ConcreteDecoratorB {
     fn new(component: Rc<dyn Component>) -> Self {
-        ConcreteDecoratorB {
-            component,
-        }
+        ConcreteDecoratorB { component }
     }
 }
 
@@ -84,5 +80,4 @@ fn main() {
 
     let decorator_a2 = ConcreteDecoratorB::new(Rc::new(decorator_a1));
     Client::client_code(&decorator_a2);
-
 }

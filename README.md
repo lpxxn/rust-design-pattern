@@ -20,6 +20,8 @@
 |:-------:|:----------- |:------:|
 | [Strategy](/behavioral/strategy.rs) | Enables an algorithm's behavior to be selected at runtime | ✔ |
 | [State](/behavioral/state.rs) | Encapsulates varying behavior for the same object based on its internal state | ✔ |
+| [Command](/behavioral/command.rs) | Bundles a command and arguments to call later | ✔ |
+
 
 
 ## Structural Patterns

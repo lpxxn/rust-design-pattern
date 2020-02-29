@@ -1,11 +1,11 @@
-// State is a behavioral design pattern that lets an object alter its behavior when its internal state changes.
-// It appears as if the object changed its class.
+//! State is a behavioral design pattern that lets an object alter its behavior when its internal state changes.
+//! It appears as if the object changed its class.
 
-// We’ll implement a blog post workflow
-// 1. A blog post starts as an empty draft.
-// 2. When the draft is done, a review of the post is requested.
-// 3. When the post is approved, it gets published.
-// 4. Only published blog posts return content to print, so unapproved posts can’t accidentally be published.
+//! We’ll implement a blog post workflow
+//! 1. A blog post starts as an empty draft.
+//! 2. When the draft is done, a review of the post is requested.
+//! 3. When the post is approved, it gets published.
+//! 4. Only published blog posts return content to print, so unapproved posts can’t accidentally be published.
 
 trait State {
     fn request_review(self: Box<Self>) -> Box<dyn State>;

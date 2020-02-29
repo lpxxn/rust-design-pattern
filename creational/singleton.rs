@@ -21,7 +21,7 @@ fn get_config() -> Arc<Mutex<Config>> {
 fn main() {
     let f1 = get_config();
     println!("{:?}", f1);
-    // modify 
+    // modify
     {
         let mut conf = f1.lock().unwrap();
         conf.db_connection_str = "hello".to_string();

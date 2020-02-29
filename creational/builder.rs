@@ -1,6 +1,5 @@
-/*
-Builder is a creational design pattern, which allows constructing complex objects step by step.
-*/
+//! Builder is a creational design pattern, which allows constructing complex objects step by step.
+
 #[derive(Clone)]
 struct Product {
     parts: Vec<String>,
@@ -60,10 +59,6 @@ impl Builder for ContreteBuilder1 {
     }
     fn get_product(&mut self) -> Product {
         let p = self.product.clone();
-        // Product {
-        //     parts: self.product.parts.clone(),
-        //     ..self.product
-        // };
         self.product = Product::new();
         p
     }
