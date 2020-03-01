@@ -20,8 +20,9 @@
 |:-------:|:----------- |:------:|
 | [Strategy](/behavioral/strategy.rs) | Enables an algorithm's behavior to be selected at runtime | ✔ |
 | [State](/behavioral/state.rs) | Encapsulates varying behavior for the same object based on its internal state | ✔ |
-| [Command](/behavioral/command.rs) | converts requests or simple operations into objects. | ✔ |
-| [Iterator](/behavioral/iterator.rs) |  lets you traverse elements of a collection without exposing its underlying representation | ✔ |
+| [Command](/behavioral/command.rs) | Converts requests or simple operations into objects. | ✔ |
+| [Iterator](/behavioral/iterator.rs) |  Lets you traverse elements of a collection without exposing its underlying representation | ✔ |
+| [Observer](/behavioral/observer.rs) | Allows one objects to notify other objects about changes in their state. | ✔ |
 
 
 
