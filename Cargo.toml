@@ -1,0 +1,50 @@
+[package]
+name = "rust_design_pattern"
+version = "0.1.0"
+authors = ["lpxxn <mi_duo@live.com>"]
+edition = "2018"
+
+[[bin]]
+name = "factory"
+path = "./creational/factory.rs"
+
+[[bin]]
+name = "abstract_factory"
+path = "./creational/abstract_factory.rs"
+
+[[bin]]
+name = "builder"
+path = "./creational/builder.rs"
+
+[[bin]]
+name = "strategy"
+path = "./behavioral/strategy.rs"
+
+[[bin]]
+name = "state"
+path = "./behavioral/state.rs"
+
+[[bin]]
+name = "command"
+path = "./behavioral/command.rs"
+
+[[bin]]
+name = "iterator"
+path = "./behavioral/iterator.rs"
+
+[[bin]]
+name = "observer"
+path = "./behavioral/observer.rs"
+
+[[bin]]
+name = "adapter"
+path = "./structural/adapter.rs"
+
+[[bin]]
+name = "decorator"
+path = "./structural/decorator.rs"
+
+[[bin]]
+name = "proxy"
+path = "./structural/proxy.rs"
+
