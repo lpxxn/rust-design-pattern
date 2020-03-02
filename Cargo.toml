@@ -37,6 +37,10 @@ name = "observer"
 path = "./behavioral/observer.rs"
 
 [[bin]]
+name = "chain_of_responsibility"
+path = "./behavioral/chain_of_responsibility.rs"
+
+[[bin]]
 name = "adapter"
 path = "./structural/adapter.rs"
 
