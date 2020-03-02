@@ -32,3 +32,5 @@
 |:-------:|:----------- |:------:|
 | [Adapter](/structural/adapter.rs) | allows objects with incompatible interfaces to collaborate. | ✔ |
 | [Decorator](/structural/decorator.rs) | Adds behavior to an object, statically or dynamically | ✔ |
+| [Proxy](/structural/proxy.rs) | Provides a surrogate for an object to control it's actions | ✔ |
+
