@@ -23,6 +23,8 @@
 | [Command](/behavioral/command.rs) | Converts requests or simple operations into objects. | ✔ |
 | [Iterator](/behavioral/iterator.rs) |  Lets you traverse elements of a collection without exposing its underlying representation | ✔ |
 | [Observer](/behavioral/observer.rs) | Allows one objects to notify other objects about changes in their state. | ✔ |
+| [Chain of Responsibility](/behavioral/chain_of_responsibility.rs) | Avoids coupling a sender to receiver by giving more than object a chance to handle the request | ✔ |
+
 
 
 

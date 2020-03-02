@@ -70,5 +70,4 @@ fn main() {
     println!("client: executing the same client code with a proxy:");
     let proxy = Proxy::new(&real_subject);
     Client::client_code(&proxy);
- 
 }
