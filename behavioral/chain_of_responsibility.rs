@@ -4,9 +4,7 @@
 // The Handler trait declares a method for building the chain of
 // handlers. It also declares a method for executing a request.
 trait Handler<'a> {
-    fn set_next(&mut self, next: &'a dyn Handler<'a>) -> &mut Self
-    where
-        Self: Sized;
+    fn set_next(&mut self, next: &'a dyn Handler<'a>) -> &mut dyn Handler<'a>;
     fn handle(&self, request: &str);
 }
 
@@ -20,7 +18,7 @@ impl<'a> AHandler<'a> {
     }
 }
 impl<'a> Handler<'a> for AHandler<'a> {
-    fn set_next(&mut self, next: &'a dyn Handler<'a>) -> &mut Self {
+    fn set_next(&mut self, next: &'a dyn Handler<'a>) -> &mut dyn Handler<'a> {
         self.next = Some(next);
         self
     }
@@ -41,7 +39,7 @@ impl<'a> BHandler<'a> {
     }
 }
 impl<'a> Handler<'a> for BHandler<'a> {
-    fn set_next(&mut self, next: &'a dyn Handler<'a>) -> &mut Self {
+    fn set_next(&mut self, next: &'a dyn Handler<'a>) -> &mut dyn Handler<'a> {
         self.next = Some(next);
         self
     }
