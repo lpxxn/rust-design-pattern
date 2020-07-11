@@ -1,21 +1,22 @@
-use std::sync::{Arc, Mutex};
+use std::mem::MaybeUninit;
+use std::sync::{Mutex, Once};
 
 #[derive(Debug)]
 struct Config {
     db_connection_str: String,
 }
 
-fn get_config() -> Arc<Mutex<Config>> {
-    static mut CONF: Option<Arc<Mutex<Config>>> = None;
-    unsafe {
-        CONF.get_or_insert_with(|| {
-            println!("init"); // do once
-            Arc::new(Mutex::new(Config {
-                db_connection_str: "test config".to_string(),
-            }))
-        })
-        .clone()
-    }
+fn get_config() -> &'static Mutex<Config> {
+    static mut CONF: MaybeUninit<Mutex<Config>> = MaybeUninit::uninit();
+    static ONCE: Once = Once::new();
+
+    ONCE.call_once(|| unsafe {
+        CONF.as_mut_ptr().write(Mutex::new(Config {
+            db_connection_str: "test config".to_string(),
+        }));
+    });
+
+    unsafe { &*CONF.as_ptr() }
 }
 
 fn main() {
