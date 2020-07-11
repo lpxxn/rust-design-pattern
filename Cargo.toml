@@ -52,3 +52,6 @@ path = "./structural/decorator.rs"
 name = "proxy"
 path = "./structural/proxy.rs"
 
+[[bin]]
+name = "singleton"
+path = "./creational/singleton.rs"
