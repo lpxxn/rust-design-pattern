@@ -21,7 +21,7 @@ struct Circle {}
 
 impl Shape for Circle {
     fn draw(&self) {
-        println!("draw a circl!");
+        println!("draw a circle!");
     }
 }
 
