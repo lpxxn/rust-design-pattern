@@ -18,10 +18,6 @@ impl FlyBehaviour for FlyNoWay{
     }
 }
 
-trait QuackBehaviour{
-    fn quack();
-}
-
 trait Duck  {
     fn get_fly_behaviour(&self) -> & dyn FlyBehaviour;
     fn fly(&self){
