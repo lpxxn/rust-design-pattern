@@ -1,44 +1,58 @@
 //! Factory method creational design pattern allows creating objects without having to specify the exact type of the object that will be created.
 
-trait Shape {
-    fn draw(&self);
+pub trait Knife {
+    fn make_sellable(&mut self);
 }
 
-enum ShapeType {
-    Rectangle,
-    Circle,
+pub trait KnifeFactory {
+    fn create_knife(&self) -> Box<dyn Knife>;
 }
 
-struct Rectangle {}
+pub struct KnifeStore<'t> {
+    factory: &'t Box<dyn KnifeFactory>
+}
 
-impl Shape for Rectangle {
-    fn draw(&self) {
-        println!("draw a rectangle!");
+impl<'t> KnifeStore<'t> {
+    pub fn order_knife(&self) -> Box<dyn Knife> {
+        let mut knife = self.factory.create_knife();
+        knife.make_sellable();
+        knife
+    }
+
+    pub fn new(factory: &'t Box<dyn KnifeFactory>) -> Self {
+        Self { factory }
     }
 }
 
-struct Circle {}
+struct SteakKnife {
+    is_sellable: bool
+}
 
-impl Shape for Circle {
-    fn draw(&self) {
-        println!("draw a circle!");
+impl Knife for SteakKnife {
+    fn make_sellable(&mut self) {
+        println!("Make the steak knife sellable");
+        self.is_sellable = true
     }
 }
 
-struct ShapeFactory;
-impl ShapeFactory {
-    fn new_shape(s: &ShapeType) -> Box<dyn Shape> {
-        match s {
-            ShapeType::Circle => Box::new(Circle {}),
-            ShapeType::Rectangle => Box::new(Rectangle {}),
-        }
+struct SteakFactory {}
+
+impl KnifeFactory for SteakFactory {
+    fn create_knife(&self) -> Box<dyn Knife> {
+        println!("Make a steak knife");
+        Box::from(SteakKnife { is_sellable: false })
     }
 }
 
-fn main() {
-    let shape = ShapeFactory::new_shape(&ShapeType::Circle);
-    shape.draw(); // output: draw a circle!
+impl SteakFactory {
+    pub fn new() -> Box<dyn KnifeFactory> {
+        Box::from(SteakFactory {})
+    }
+}
 
-    let shape = ShapeFactory::new_shape(&ShapeType::Rectangle);
-    shape.draw(); // output: draw a rectangle!
+#[test]
+fn test() {
+    let factory = SteakFactory::new();
+    let store = KnifeStore::new(&factory);
+    let _knife = store.order_knife();
 }
