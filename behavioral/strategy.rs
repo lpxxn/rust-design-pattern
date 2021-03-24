@@ -1,44 +1,76 @@
-trait FlyBehavior {
-    fn fly(&self) {
-        println!("i can fly!~~");
+trait FlyBehaviour{
+    fn fly(&self);
+}
+
+struct FlyWithWings;
+
+impl FlyBehaviour for FlyWithWings {
+    fn fly(&self){
+        println!("i can fly!")
     }
 }
 
-struct CanFly;
+struct FlyNoWay;
 
-impl FlyBehavior for CanFly {}
-
-struct CanNotFly;
-impl FlyBehavior for CanNotFly {
-    fn fly(&self) {
-        println!("i can't fly!");
+impl FlyBehaviour for FlyNoWay{
+    fn fly(&self){
+        println!("i can't fly!~~")
     }
 }
 
-struct Duck {
-    fly_behaviour: Box<dyn FlyBehavior>,
+trait Duck  {
+    fn get_fly_behaviour(&self) -> & dyn FlyBehaviour;
+    fn fly(&self){
+        let s = self.get_fly_behaviour();
+        s.fly();
+    }
 }
 
-impl Duck {
-    fn fly(&self) {
-        self.fly_behaviour.fly();
-    }
+struct MallardDuck{
+    fly_behaviour: Box<dyn FlyBehaviour>,
+}
 
-    fn new(fly_behaviour: Box<dyn FlyBehavior>) -> Duck {
-        Duck { fly_behaviour }
-    }
+impl Duck for MallardDuck   {
+    fn get_fly_behaviour (&self)  ->  & dyn FlyBehaviour{
+        return &(*self.fly_behaviour);
+    } 
+}
 
-    fn set_fly_behaviour(&mut self, fly_behaviour: Box<dyn FlyBehavior>) {
+impl MallardDuck{
+    fn new(fly_behaviour: Box< dyn FlyBehaviour>) -> Self{
+        MallardDuck{ fly_behaviour }
+    }
+    fn set_fly_behaviour(& mut self, fly_behaviour: Box< dyn FlyBehaviour>){
         self.fly_behaviour = fly_behaviour;
     }
 }
 
-fn main() {
-    let mut model_duck = Duck::new(Box::new(CanFly));
-    model_duck.fly();
-    model_duck.set_fly_behaviour(Box::new(CanNotFly));
-    model_duck.fly();
-
-    let mallard_duck = Duck::new(Box::new(CanFly));
-    mallard_duck.fly();
+struct ModelDuck{
+    fly_behaviour: Box<FlyNoWay>,
 }
+
+impl Duck for ModelDuck   {
+    fn get_fly_behaviour (&self)  ->  & dyn FlyBehaviour{
+        return &(*self.fly_behaviour);
+    } 
+}
+
+impl ModelDuck{
+    fn new(fly_behaviour: Box<FlyNoWay>)-> Self{
+        ModelDuck{ fly_behaviour }
+    }
+}
+
+
+pub fn main() {
+    let mut mallard_duck = MallardDuck::new(Box::new(FlyWithWings));
+    mallard_duck.fly();
+    mallard_duck.set_fly_behaviour(Box::new(FlyNoWay));
+    mallard_duck.fly();
+
+    let model_duck = ModelDuck::new(Box::new(FlyNoWay));
+    model_duck.fly();
+}
+
+
+
